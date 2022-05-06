@@ -1,7 +1,24 @@
-<div>
-  <label for="phone">
-    Phone
-  </label>
+<form [formGroup]="form" (submit)="lala()">
+    <label for="phone">
+        Phone
+    </label>
 
-  <input id="phone" type="text" name="phone" [(ngModel)]="phone" />
-</div>
+    <input id="phone" type="text" name="phone" formControlName="phone" maxlength="14" appCanadaPhone />
+
+    <button [attr.disabled]="form.invalid ? '' : null" type="submit">submit</button>
+
+
+    <p class="validation validation--error" *ngIf="(getFormValidators('phone')?.['touched'] && getFormValidators('phone')['errors'])">
+        <span>Phone must have 10 characters</span>
+    </p>
+
+    <p class="validation validation--success" *ngIf="(getFormValidators('phone')?.['touched'] && getFormValidators('phone')['valid'])">
+        <span>Success</span>
+    </p>
+
+    <p>
+        <strong>Phone:</strong> {{ form.value.phone }}
+    </p>
+
+
+  </form>
