@@ -47,7 +47,6 @@ export class CanadaPhoneDirective {
     }
 
     onChangeCallback(value: string) {
-        console.log(value);
         if (value.charAt(0) === '1') {
             this.renderer.setProperty(this.elementRef.nativeElement, 'value', '');
             value = value.replace('1', '');
