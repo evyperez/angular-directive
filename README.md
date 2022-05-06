@@ -1,10 +1,17 @@
 # AngularDirective
 
-Project made using Angular. This is a example of how to use phone directive.
+Project made using Angular. This is a example of how to use phone directive and form validation.
+
+## Production
+
+Deploy using Netlify.
+You can see the project on [Netlify](https://magical-sherbet-b9762e.netlify.app)
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Run `npm i` to install all dependencies
+
+2. Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
