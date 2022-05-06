@@ -24,18 +24,18 @@ export class CanadaPhoneDirective {
             second = newValue.slice(3, 6);
             last = newValue.slice(6, 10);
             if (first.charAt(0) === '1') {
-              this.renderer.setProperty(this.elementRef.nativeElement, 'value', '');
-              first = first.replace('1', '');
-          }
-            if (newValue.length > 3 && newValue.length < 10) {
-            if (second === '') {
-                this.renderer.setProperty(this.elementRef.nativeElement, 'value', `(${first})`);
-            } else if (last === '') {
-                this.renderer.setProperty(this.elementRef.nativeElement, 'value', `(${first}) ${second}`);
-            } else {
-                this.renderer.setProperty(this.elementRef.nativeElement, 'value', `(${first}) ${second}-${last}`);
+                this.renderer.setProperty(this.elementRef.nativeElement, 'value', '');
+                first = first.replace('1', '');
             }
-          }
+            if (newValue.length > 3 && newValue.length < 10) {
+                if (second === '') {
+                    this.renderer.setProperty(this.elementRef.nativeElement, 'value', `(${first})`);
+                } else if (last === '') {
+                    this.renderer.setProperty(this.elementRef.nativeElement, 'value', `(${first}) ${second}`);
+                } else {
+                    this.renderer.setProperty(this.elementRef.nativeElement, 'value', `(${first}) ${second}-${last}`);
+                }
+            }
         } else {
             this.renderer.setProperty(this.elementRef.nativeElement, 'value', '');
         }
@@ -47,6 +47,11 @@ export class CanadaPhoneDirective {
     }
 
     onChangeCallback(value: string) {
+        console.log(value);
+        if (value.charAt(0) === '1') {
+            this.renderer.setProperty(this.elementRef.nativeElement, 'value', '');
+            value = value.replace('1', '');
+        }
         this.ngControl?.control?.patchValue(value, {
             emitModelToViewChange: false,
         });
